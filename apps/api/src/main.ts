@@ -1,5 +1,5 @@
 import * as express from 'express';
-import { Message } from '@monsters,-inc/api-interfaces';
+import { Message } from '@monsters-inc/api-interfaces';
 
 const app = express();
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Message } from '@monsters,-inc/api-interfaces';
+import { Message } from '@monsters-inc/api-interfaces';
 
 export const App = () => {
   const [m, setMessage] = useState<Message>({ message: '' });
