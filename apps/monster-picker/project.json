@@ -1,0 +1,84 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/monster-picker/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/monster-picker",
+        "index": "apps/monster-picker/src/index.html",
+        "baseHref": "/",
+        "main": "apps/monster-picker/src/main.tsx",
+        "polyfills": "apps/monster-picker/src/polyfills.ts",
+        "tsConfig": "apps/monster-picker/tsconfig.app.json",
+        "assets": [
+          "apps/monster-picker/src/favicon.ico",
+          "apps/monster-picker/src/assets"
+        ],
+        "styles": [],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/monster-picker/src/environments/environment.ts",
+              "with": "apps/monster-picker/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "monster-picker:build",
+        "hmr": true,
+        "proxyConfig": "apps/monster-picker/proxy.conf.json"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "monster-picker:build:development"
+        },
+        "production": {
+          "buildTarget": "monster-picker:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/monster-picker/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/monster-picker"],
+      "options": {
+        "jestConfig": "apps/monster-picker/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
