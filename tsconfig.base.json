@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@monsters-inc/api-interfaces": ["libs/api-interfaces/src/index.ts"]
+      "@monsters-inc/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@monsters-inc/monsters/feature": ["libs/monsters/feature/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

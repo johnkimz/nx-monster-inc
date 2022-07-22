@@ -1,0 +1,83 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/monster-builder/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/monster-builder",
+        "index": "apps/monster-builder/src/index.html",
+        "baseHref": "/",
+        "main": "apps/monster-builder/src/main.tsx",
+        "polyfills": "apps/monster-builder/src/polyfills.ts",
+        "tsConfig": "apps/monster-builder/tsconfig.app.json",
+        "assets": [
+          "apps/monster-builder/src/favicon.ico",
+          "apps/monster-builder/src/assets"
+        ],
+        "styles": [],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/monster-builder/src/environments/environment.ts",
+              "with": "apps/monster-builder/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "monster-builder:build",
+        "hmr": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "monster-builder:build:development"
+        },
+        "production": {
+          "buildTarget": "monster-builder:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/monster-builder/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/monster-builder"],
+      "options": {
+        "jestConfig": "apps/monster-builder/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

@@ -4,7 +4,10 @@
   "projects": {
     "api": "apps/api",
     "api-interfaces": "libs/api-interfaces",
+    "monster-builder": "apps/monster-builder",
+    "monster-builder-e2e": "apps/monster-builder-e2e",
     "monster-picker": "apps/monster-picker",
-    "monster-picker-e2e": "apps/monster-picker-e2e"
+    "monster-picker-e2e": "apps/monster-picker-e2e",
+    "monsters-feature": "libs/monsters/feature"
   }
 }
